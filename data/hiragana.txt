@@ -1,0 +1,9 @@
+こんにちは;konnichiwa
+ありがとう;arigato
+りんご;ringo
+すみません;sumimasen
+おはよう;ohayou
+こんばんは;konbanwa
+いいえ;iie
+はい;Hai
+お願いします;onegaishimasu
