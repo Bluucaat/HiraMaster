@@ -1,9 +1,19 @@
-こんにちは;konnichiwa
-ありがとう;arigato
-りんご;ringo
-すみません;sumimasen
-おはよう;ohayou
-こんばんは;konbanwa
-いいえ;iie
-はい;Hai
-お願いします;onegaishimasu
+こんにちは;Konnichiwa;Hello/ good afternoon
+こんばんは;Konbanwa;Good evening
+おやすみなさい;Oyasuminasai;Goodnight
+ありがとうございます;Arigatou gozaimasu;Thank you
+すみません;Sumimasen;Excuse me/ sorry
+ごめんなさい;Gomennasai;Sorry
+おはようございます;Ohayou gozaimasu;Good morning
+こんにちは;Konnichiwa;Hello/ good afternoon
+こんばんは;Konbanwa;Good evening
+おやすみなさい;Oyasuminasai;Goodnight
+ありがとうございます;Arigatou gozaimasu;Thank you
+すみません;Sumimasen;Excuse me/ sorry
+ごめんなさい;Gomennasai;Sorry
+はい;Hai;Yes
+いいえ;Iie;No
+わたし;Watashi;I/me
+あなた;Anata;You
+おじさん;Ojisan;Uncle
+おばさん;Obasan;Aunt

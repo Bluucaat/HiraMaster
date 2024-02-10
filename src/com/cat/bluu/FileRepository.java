@@ -3,8 +3,7 @@ package com.cat.bluu;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class FileRepository extends Repository {
     private String name;
@@ -14,16 +13,16 @@ public class FileRepository extends Repository {
     }
 
     @Override
-    HashMap<String, String> getData() {
-        HashMap<String, String> data = new HashMap<>();
+    ArrayList<DataObject> getData() {
+        ArrayList<DataObject> data = new ArrayList<>();
         try {
 
             BufferedReader br = new BufferedReader(new FileReader(this.name));
 
             String line;
             while ((line = br.readLine()) != null) {
-                String[] lineData = line.split(";");
-                data.put(lineData[0], lineData[1]);
+                DataObject dataObject = new DataObject(line);
+                data.add(dataObject);
             }
 
         } catch (IOException e) {

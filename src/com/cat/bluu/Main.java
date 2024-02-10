@@ -8,6 +8,5 @@ public class Main {
         UI ui = new TextUI(service);
         ui.run();
 
-
     }
 }

@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class TextUI extends UI {
 
-
     public TextUI(Service service) {
         this.service = service;
     }
@@ -14,23 +13,16 @@ public class TextUI extends UI {
         while (true) {
             printOptions();
             int userChoice = readOptionInput();
-
-            switch (userChoice) {
-                case 1 -> {
-                    String[] data = service.genPhrase();
-                    System.out.println("Phrase: " + data[0]);
-                    String userWord = readWordInput();
-                    if((userWord.equalsIgnoreCase(data[1]))){
-                        System.out.println("Waow u win");
-                    }else{
-                        System.out.println("Waow u suck");
-                    }
-
-                }
-                case 2 -> {
-                    System.out.println("Quitting.");
-                    return;
-                }
+            //switch would be nicer but "if" leads to less indentation
+            if (userChoice == 1) {
+                DataObject phrase = service.genPhrase();
+                System.out.printf("Phrase: %s%nRomaji equivalent:", phrase.getJapanese());
+                System.out.println(validateAnswer(phrase));
+            } else if (userChoice == 2) {
+                System.out.println("Quitting.");
+                return;
+            } else {
+                System.out.println("Incorrect input");
             }
         }
     }
@@ -63,4 +55,28 @@ public class TextUI extends UI {
         return input;
     }
 
+
+    public String validateAnswer(DataObject phrase) {
+        String japanese = phrase.getJapanese();
+        String romaji = phrase.getRomaji();
+        String translation = phrase.getTranslation();
+
+        String userWord = readWordInput().strip().replace(" ", "");
+        String requiredWord = romaji.strip().replace(" ", "");
+        if (userWord.equalsIgnoreCase(requiredWord)) {
+            return answer("correct", japanese, romaji, translation);
+        } else {
+            return answer("incorrect", japanese, romaji, translation);
+
+        }
+    }
+
+    public static String answer(String result, String japanese, String romaji, String translation) {
+        return String.format("-".repeat(30) +
+                        "%nYour answer is %s.%nWord: %s%n" +
+                        "Romaji: %s%n" +
+                        "Meaning: %s%n" +
+                        "-".repeat(30) + "%n",
+                result, japanese, romaji, translation);
+    }
 }

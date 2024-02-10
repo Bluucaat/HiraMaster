@@ -1,8 +1,6 @@
 package com.cat.bluu;
-
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public abstract class Repository {
-
-    abstract HashMap<String, String> getData();
+    abstract ArrayList<DataObject> getData();
 }
