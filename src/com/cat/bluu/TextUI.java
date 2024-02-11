@@ -1,5 +1,6 @@
 package com.cat.bluu;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class TextUI extends UI {
@@ -13,11 +14,17 @@ public class TextUI extends UI {
         while (true) {
             printOptions();
             int userChoice = readOptionInput();
-            //switch would be nicer but "if" leads to less indentation
             if (userChoice == 1) {
-                DataObject phrase = service.genPhrase();
-                System.out.printf("Phrase: %s%nRomaji equivalent:", phrase.getJapanese());
-                System.out.println(validateAnswer(phrase));
+                try {
+                    DataObject phrase = service.genPhrase();
+
+                    System.out.printf("Phrase: %s%nRomaji equivalent:", phrase.getJapanese());
+                    System.out.println(validateAnswer(phrase));
+                } catch (IOException exception) {
+                    System.out.println("An error occured while executing the program:\n");
+                    exception.printStackTrace();
+                }
+
             } else if (userChoice == 2) {
                 System.out.println("Quitting.");
                 return;
@@ -55,28 +62,35 @@ public class TextUI extends UI {
         return input;
     }
 
-
     public String validateAnswer(DataObject phrase) {
-        String japanese = phrase.getJapanese();
-        String romaji = phrase.getRomaji();
-        String translation = phrase.getTranslation();
+        try {
+            String japanese = phrase.getJapanese();
+            String romaji = phrase.getRomaji();
+            String translation = phrase.getTranslation();
+            String mappedWord = service.generateRomaji(phrase.getJapanese());
+            String userWord = readWordInput().strip().replace(" ", "");
+//          String accuracy = service.checkAccuracy(userWord);
+            String requiredWord = romaji.strip().replace(" ", "");
 
-        String userWord = readWordInput().strip().replace(" ", "");
-        String requiredWord = romaji.strip().replace(" ", "");
-        if (userWord.equalsIgnoreCase(requiredWord)) {
-            return answer("correct", japanese, romaji, translation);
-        } else {
-            return answer("incorrect", japanese, romaji, translation);
-
+            if (userWord.equalsIgnoreCase(requiredWord)) {
+                return answer("correct", japanese, romaji, translation, mappedWord);
+            } else {
+                return answer("incorrect", japanese, romaji, translation, mappedWord);
+            }
+        } catch (IOException exception) {
+            System.out.println("An error occured while executing the program:\n");
+            exception.printStackTrace();
         }
+        return null;
     }
 
-    public static String answer(String result, String japanese, String romaji, String translation) {
+    public static String answer(String result, String japanese, String romaji, String translation, String mappedWord) {
         return String.format("-".repeat(30) +
                         "%nYour answer is %s.%nWord: %s%n" +
                         "Romaji: %s%n" +
                         "Meaning: %s%n" +
+                        "Mapped word: %s%n" +
                         "-".repeat(30) + "%n",
-                result, japanese, romaji, translation);
+                result, japanese, romaji, translation, mappedWord);
     }
 }

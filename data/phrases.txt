@@ -5,15 +5,12 @@
 すみません;Sumimasen;Excuse me/ sorry
 ごめんなさい;Gomennasai;Sorry
 おはようございます;Ohayou gozaimasu;Good morning
-こんにちは;Konnichiwa;Hello/ good afternoon
-こんばんは;Konbanwa;Good evening
-おやすみなさい;Oyasuminasai;Goodnight
-ありがとうございます;Arigatou gozaimasu;Thank you
-すみません;Sumimasen;Excuse me/ sorry
-ごめんなさい;Gomennasai;Sorry
 はい;Hai;Yes
 いいえ;Iie;No
 わたし;Watashi;I/me
 あなた;Anata;You
 おじさん;Ojisan;Uncle
 おばさん;Obasan;Aunt
+きょう;Kyoo;Today
+きょねん;Kyonen;Last year
+きょうし;Kyoushi;Teacher

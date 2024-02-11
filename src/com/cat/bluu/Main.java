@@ -3,9 +3,9 @@ package com.cat.bluu;
 public class Main {
     public static void main(String[] args) {
 
-        Repository repo = new FileRepository("data/hiragana.txt");
-        Service service = new Service(repo);
-        UI ui = new TextUI(service);
+        Repository phraseRepo = new FileRepository("data/phrases.txt", "data/hiraganamap.txt");
+        Service phraseGenerator = new Service(phraseRepo);
+        UI ui = new TextUI(phraseGenerator);
         ui.run();
 
     }
